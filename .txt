@@ -1,0 +1,69 @@
+- ERD툴을 사용해서 User와 Todo 테이블 설계하기
+- postman으로 테스트 할 수 있는 API로 구성된 Todo List 프로젝트 만들기 (프론트 제외)
+
+1. 회원기능
+  - 사용자 테이블(User) 필수 필드
+    - id 데이터고유 id = pk
+    - email 이걸 아이디로 사용, 유니크한 값
+    - password 회원 생성, 수정 시 암호화하여 저장
+    - name 이름
+    - gender 성별
+    - age 나이
+    - introduction 자기소개 글
+
+2. 로그인
+  - POST 요청 시 장고 세션 기능을 이용해 로그인
+  - (JWT도 가능하다면 시도)
+
+3. 로그아웃
+  - POST 요청 시 세션정보 삭제하여 로그아웃
+
+4. 회원 정보 수정
+  - PUT 요청 시 아이디(email)제외 수정 가능
+  - 비밀번호 수정 시 암호화 하여 저장
+
+5. 회원 탈퇴
+  -DELETE 요청 시 계정 삭제
+
+6. Todo List
+  -필수 필드
+    - id 고유 pk값
+    - title 할 일 제목
+    - is_complete 완료여부
+    - created_at 할 일 생성시간
+    - updated_at 마지막 수정시간
+    - completion_at 할 일 완료시간
+    - user_id 사용자 테이블과 FK로 관계형성
+  - POST 요청 시 할 일 생성
+
+7. Todo List 조회
+  - GET 요청 시 할 일 목록 조회
+  - response 예시
+    [
+      {
+          "id": 1,
+          "title": "과제하기",
+          "is_complete": "True",
+          "created_at": "2023-04-01",
+          "updated_at": "",
+          "completion_at": "2023-04-05",
+      },
+      {
+          "id": 2,
+          "title": "공부하기",
+          "is_complete": "False",
+          "created_at": "2023-04-02",
+          "updated_at": "2023-04-03",
+          "completion_at": ""
+      },
+      ...
+]
+
+8. Todo List 수정
+  - PUT 요청 시 할 일 수정
+  - 할 일 완료 시 is_complete를 True로 수정가능
+  - 미완료시 False로 수정가능
+  - title 수정가능
+
+9. Todo List 삭제
+  - DELETE 요청 시 삭제
