@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from django.utils import timezone
+
 
 
 class UserManager(BaseUserManager):
@@ -41,10 +43,10 @@ class User(AbstractBaseUser):
     )
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-    username = models.TextField(default=False)
-    gender = models.TextField(default=False)
-    age = models.IntegerField(default=False)
-    introduction = models.TextField(default=False)
+    username = models.TextField(default=False, verbose_name="username")
+    gender = models.TextField(default=False, verbose_name ="gender")
+    age = models.IntegerField(default=False, verbose_name ="age")
+    introduction = models.TextField(default=False, verbose_name ="introduction")
 
     objects = UserManager()
 
@@ -69,3 +71,20 @@ class User(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
+
+
+# class TodoList(models.Model):
+#     user_id = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="유저")
+#     title = models.CharField(max_length=100, verbose_name="제목")
+#     created_at = models.DateField(auto_now_add=True, verbose_name="생성시간")
+#     updated_at = models.DateField(auto_now=True, verbose_name="업데이트시간")
+#     is_complete = models.BooleanField(default=False, verbose_name="완료여부")
+#     completion_at = models.DateField(null=True, blank=True, verbose_name="완료시간")
+
+#     def save(self,*args, **kwargs):
+#         if self.is_complete and not self.completion_at:
+#             self.completion_at = timezone.now()
+#         super().save(*args, **kwargs)
+
+#     def __str__(self):
+#         return self.title
