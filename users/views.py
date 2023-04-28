@@ -9,6 +9,7 @@ from .models import User
 
 class UserSignup(APIView):
     def post(self, request):
+        print("UserSignup_request", request)
         #request요청 프린트해보기
         serializer = Userserializer(data=request.data)
         if serializer.is_valid():
