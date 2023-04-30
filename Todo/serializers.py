@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import TodoList
+from .models import TdList
 
 
 class todolistserializer(serializers.ModelSerializer):
     class Meta:
-        model = TodoList
+        model = TdList
         fields = "__all__"

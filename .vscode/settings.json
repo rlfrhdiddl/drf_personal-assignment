@@ -1,6 +1,10 @@
 {
   "cSpell.words": [
+    "deletetodolist",
+    "showtodolist",
+    "swserializer",
     "tdserializer",
+    "Todolist",
     "todolistserializer",
     "Userserializer"
   ]
